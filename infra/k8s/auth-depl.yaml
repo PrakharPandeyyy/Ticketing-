@@ -1,8 +1,8 @@
-apiVersion : apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: auth-depl
-spec: 
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -13,9 +13,8 @@ spec:
         app: auth
     spec:
       containers:
-      - name: auth
-        image: prakharpandeyyy/auth  
-
+        - name: auth
+          image: us.gcr.io/ticketing-dev-413816/auth
 ---
 apiVersion: v1
 kind: Service
@@ -29,5 +28,3 @@ spec:
       protocol: TCP
       port: 3000
       targetPort: 3000
-
-
