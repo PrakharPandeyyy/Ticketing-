@@ -1,14 +1,18 @@
-apiVersion: skaffold/v4beta9
+apiVersion: skaffold/v4beta3
 kind: Config
-metadata:
-  name: ticketing
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
 build:
+  local:
+    push: false
   artifacts:
-    - image: us.gcr.io/ticketing-dev-413816/auth
+    - image: prakharpandeyyy/auth
       context: auth
       docker:
         dockerfile: Dockerfile
-manifests:
-  rawYaml:
-    - infra/k8s/auth-depl.yaml
-    - infra/k8s/ingress-srv.yaml
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .          
+
