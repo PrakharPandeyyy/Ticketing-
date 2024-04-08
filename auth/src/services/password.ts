@@ -30,8 +30,7 @@ export class Password {
 
     static async compare(storedPassword: string, suppliedPassword: string) {
         const hashedPassword = storedPassword;
-        const buf = Buffer.from(hashedPassword, 'hex');
-        const result = await bcrypt.compare(suppliedPassword, buf.toString());
+        const result = await bcrypt.compare(suppliedPassword, hashedPassword);
 
         return result;
     }
