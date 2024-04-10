@@ -17,7 +17,7 @@ function Header({ currentUser }) {
 
   return (
     <nav className="navbar navbar-light bg-light">
-      <a className="navbar-brand" href="/">
+      <a className="navbar-brand" style={{ transform: 'translateX(20px)' }} href="/" >
         Ticketing APP
       </a>
       <div className="d-flex justify-content-end">
