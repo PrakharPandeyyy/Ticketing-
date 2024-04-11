@@ -1,14 +1,13 @@
 import express from "express";
 import { Request, Response } from "express";
-import { validateRequest } from "../middlewares/validate-request";
+import { validateRequest , BadRequestError } from "@pptgtickets/common";
 import { User } from "../models/users";
-import { BadRequestError } from "../errors/bad-request-error";
+
 import jwt from "jsonwebtoken";
 import { Password } from "../services/password";
 const router = express.Router();
 
 const { body, validationResult } = require("express-validator");
-import { RequestValidationError } from "../errors/request-validation-error";
 
 router.post(
   "/api/users/signin",
