@@ -1,14 +1,16 @@
 import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
-import mongoose from "mongoose";
+
 import cookieSession from "cookie-session";
 
+//Routes
+import { createTicketRouter } from "./routes/new";
 
 
 
 //Middlewares
-import { errorHandler , NotFoundError} from "@pptgtickets/common";
+import { errorHandler , NotFoundError ,currentUser} from "@pptgtickets/common";
 
 
 
@@ -21,7 +23,10 @@ app.use(
     secure: process.env.NODE_ENV !== "test",
   })
 );
+app.use(currentUser);
 
+//Routes
+app.use(createTicketRouter);
 
 // using error handler
 app.all("*", async () => {
