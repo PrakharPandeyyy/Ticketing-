@@ -7,6 +7,8 @@ import cookieSession from "cookie-session";
 //Routes
 import { createTicketRouter } from "./routes/new";
 import { showTicketRouter } from "./routes/show";
+import { updateTicketRouter } from "./routes/update";
+import { indexTicketRouter } from "./routes/index";
 
 
 
@@ -26,6 +28,8 @@ app.use(
 );
 app.use(currentUser);
 app.use(showTicketRouter);
+app.use(updateTicketRouter);
+app.use(indexTicketRouter);
 
 //Routes
 app.use(createTicketRouter);
